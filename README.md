@@ -1,2 +1,2 @@
 # fold
-fold metrics
+Iterated fold metrics, live at https://usm.github.io/fold.
