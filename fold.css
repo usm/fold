@@ -1,7 +1,62 @@
-body {
-    color:navy;
-    font-family:arial
+:root {
+    --color:navy;
+    --family:sans-serif;
 }
-h2 {
+
+body {
+    font-family:var(--family);
+    margin:2.5em;
+    color:var(--color)
+}
+
+h1 {
     color:maroon
+}
+
+h2 {
+    color:orange
+}
+
+h3 {
+    color:darkgreen
+}
+
+a {
+    color:blue
+}
+
+a:hover {
+    color:green;
+    background-color:yellow;
+}
+
+.link:hover {
+    background-color:yellow;
+    cursor:pointer;
+}
+
+p {
+  margin-bottom: 1em;
+  line-height: 1.4em;
+}
+
+
+code {
+  color:brown;
+  font-family:var(--family);
+  /*font-family:var(--family);
+  font-style: italic;*/
+  background-color:white;
+}
+
+
+button {
+  border-radius: 10px;
+  font-size:medium;
+  color:blue;
+}
+
+button:hover {
+   background-color:yellow;
+   cursor:pointer;
 }
