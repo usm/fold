@@ -4,8 +4,13 @@
 </head>
 <body>
     <h1>USM<sub style='font-size:large'>fold</sub> <sup style="font-size:large;font-weight:normal">[<a href="https://github.com/usm/fold" target="_blank">code</a>] [<a href="https://observablehq.com/@episphere/fold" target="_blank">notebook</a>] [<a href="https://github.com/usm/fold/issues" target="_blank">issues</a>]</sup></h1>
-    USM-fold: Bidirectional Fractal Position Encoding of Biological Sequences
+    <p>USM-fold: Bidirectional Fractal Position Encoding of Biological Sequences.</p>
     <hr>
-    <div>...</div>
+    <h2>Chaos Game Representation (CGR)</h2>
+    <p>Let's start by loading the USM module, <code>Umod = (await import(`https://usm.github.io/3/usm.mjs`))</code>, give it a try in the <a href="https://developer.chrome.com/docs/devtools/console" target="_blank">browser console</a>). Alternatively, <code>Umod</code>, can be engaged graphically to instantiate a small forward USM reproducing the original Chaos Game Representation procedure (CGR). Let's start with a short nucleotide sequence, say "GATACA", and expand or contract it anyway you see fit.</p>
+    <textarea id="taCGR" style="width:100%;font-size:large">GATACA</textarea>
+    <div id="divPlotCGR"></div>
+    <div id="divFold">...</div>
+    <script src="index.js"></script>
 </body>
 

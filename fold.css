@@ -14,7 +14,7 @@ h1 {
 }
 
 h2 {
-    color:orange
+    color:#3F51B5
 }
 
 h3 {
@@ -42,10 +42,11 @@ p {
 
 
 code {
-  color:brown;
+  color:darkgreen;
   font-family:var(--family);
+  font-style: italic;
   /*font-family:var(--family);
-  font-style: italic;*/
+   font-style: italic;*/
   background-color:white;
 }
 
