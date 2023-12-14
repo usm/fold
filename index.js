@@ -15,3 +15,5 @@ console.log(`index.js loaded\n${Date()}`);
     taCGR.onkeyup=plotCGR
 })()
 
+//import('./fold.mjs')
+
