@@ -1,4 +1,4 @@
-// this module will focus on teh folding mechanism only,
+// this module will focus on the folding mechanism only,
 // for the USM library, imported here by index.js,
 // see usm.github.io/3
 
