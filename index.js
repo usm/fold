@@ -15,7 +15,40 @@ console.log(`index.js loaded\n${Date()}`);
         u.plotACGT(divPlotUSM,size,direction)
         //console.log(u)
     }
+
+    function plotCanvas(){
+        
+    }
+    
+    // coordinate plot
     plotUSM()
     taCGR.onkeyup=plotUSM;
     [...divParms.querySelectorAll('input')].forEach(ip => {ip.onchange=plotUSM})
+
+    // density plot
+
+    let seq = (await Umod.getSeq()).seq // default sequence
+    taDensitySequence.value=seq.toLocaleUpperCase()
+    densityButton.disabled=false
+    densityButton.style.color="blue"
+    seqLength.textContent=seq.length
+    densityButton.onclick=function(){
+        taDensitySequence.value=taDensitySequence.value.toLocaleUpperCase()
+        seq = taDensitySequence.value // a new sequence may have been pasted in
+        let u = new Umod.USM(seq,'bidirectional',['A','C','G','T'])
+        console.log(u)
+    }
+
+    rangeQuadrants.onchange=function(){
+        numQuadrants.value=rangeQuadrants.value
+        numBins.textContent = numQuadrants.value**2
+        ngramLength.textContent=Math.log2(parseInt(numQuadrants.value))
+    }
+
+    numQuadrants.onchange=function(){
+        rangeQuadrants.value=numQuadrants.value
+        numBins.textContent = numQuadrants.value**2
+        ngramLength.textContent=Math.log2(parseInt(numQuadrants.value))
+    }
+    
 })()
