@@ -9,16 +9,25 @@
     <h2>Universal Sequence Map (USM) generalization<br> of Chaos Game Representation (CGR)</h2>
     <p>Let's start by loading the USM module, <code>Umod = (await import(`https://usm.github.io/3/usm.mjs`))</code>. Give it a try in the <a href="https://developer.chrome.com/docs/devtools/console" target="_blank">browser console</a>). Alternatively, <code>Umod</code>, can be engaged graphically to instantiate a small forward USM reproducing the original Chaos Game Representation procedure (CGR). Let's start with a short nucleotide sequence, say "GATTACA", and expand or contract it anyway you see fit.</p>
     <div id="divParms">
-        <textarea id="taCGR" style="width:100%;font-size:large">GATTACA</textarea>
-        <br><b>Size: </b><input id="plotSize" type="number" min=20 max=2000 value=500>; <b> Direction:</b> 
-            <input type="radio" id="direction_forward" name="direction" value="forward" checked="true"> forward
-            <input type="radio" id="direction_backward" name="direction"value="backward"> backward;
-        <br><b>Seed:</b>
+            <!--<b> Direction:</b> <input type="radio" id="direction_forward" name="direction" value="forward" checked="true"> forward 
+            <input type="radio" id="direction_backward" name="direction"value="backward"> backward;-->
+        <b>Seed:</b>
             <input type="radio" id="seed_middle" name="seed" value="middle" checked="true"> middle (CGR)
             <input type="radio" id="seed_circular" name="seed" value="circular"> circular
-            <input type="radio" id="seed_bidirectional" name="seed" value="bidirectional"> bidirectional
+            <input type="radio" id="seed_bidirectional" name="seed" value="bidirectional"> bidirectional ;
+            <b>Size: </b><input id="plotSize" type="number" min=0 max=900 value=300>
+            <textarea id="taCGR" style="width:100%;font-size:large">GATTACA</textarea>
     </div>
-    <div id="divPlotUSM"></div>
+    <!--<div id="divPlotUSM"></div>-->
+    <table>
+        <tr>
+            <td id="forwardACGT"></td><td id="backwardACGT"></td>
+        </tr>
+    </table>
+    <!--
+    <span id="forwardACGT"></span>
+    <span id="backwardACGT"></span>
+    -->
     <div id="divFold">
         <hr>
         <h2>Density distribution</h2>
