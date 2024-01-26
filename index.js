@@ -10,7 +10,7 @@ console.log(`index.js loaded\n${Date()}`);
         taCGR.value=taCGR.value.toUpperCase().replace(/[^ACGT]/g,'')
         //let direction = [direction_forward,direction_backward].filter(ip=>ip.checked==true)[0].value
         let seed = [seed_middle,seed_circular,seed_bidirectional].filter(ip=>ip.checked==true)[0].value
-        let size = parseInt(plotSize.value)+300
+        let size = parseInt(plotSize.value)+200
         let u = new Umod.USM(taCGR.value,seed,['A','C','G','T'])
         //u.plotACGT(divPlotUSM,size,direction)
         //console.log(u)
@@ -26,12 +26,24 @@ console.log(`index.js loaded\n${Date()}`);
     plotUSM()
     taCGR.onkeyup=plotUSM;
     [...divParms.querySelectorAll('input')].forEach(ip => {ip.onchange=plotUSM})
-
+    plotRange.onchange=function(){
+        plotSize.value= this.value
+        plotUSM()
+    }
+    plotSize.onchange=function(){
+        plotRange.value = this.value
+        plotUSM()
+    }
+    
     // density plot
 
-    let seq = await localForage.getItem('LRG_304') || (await Umod.getSeq()).seq
-    
-    let seq = (await Umod.getSeq()).seq // default sequence
+    let seq = await localForage.getItem('LRG_304') // default LRG_304 EGFR sequence
+    if(!seq){
+        seq = (await Umod.getSeq()).seq
+        localForage.setItem('LRG_304',seq)
+    }
+    //let seq = (await Umod.getSeq()).seq // default sequence
+    let u2 // the usm map of the long sequence 
     taDensitySequence.value=seq.toLocaleUpperCase()
     densityButton.disabled=false
     densityButton.style.color="blue"
@@ -39,20 +51,37 @@ console.log(`index.js loaded\n${Date()}`);
     densityButton.onclick=function(){
         taDensitySequence.value=taDensitySequence.value.toLocaleUpperCase()
         seq = taDensitySequence.value // a new sequence may have been pasted in
-        let u = new Umod.USM(seq,'bidirectional',['A','C','G','T'])
-        console.log(u)
+        u2 = new Umod.USM(seq,'bidirectional',['A','C','G','T'])
+        seqLength.textContent = u2.seq.length
+        densityGray(u2)
+        console.log(u2)
     }
+    densityButton.click()
 
     rangeQuadrants.onchange=function(){
         numQuadrants.value=rangeQuadrants.value
         numBins.textContent = numQuadrants.value**2
         ngramLength.textContent=Math.log2(parseInt(numQuadrants.value))
+        densityGray()
     }
 
     numQuadrants.onchange=function(){
         rangeQuadrants.value=numQuadrants.value
         numBins.textContent = numQuadrants.value**2
         ngramLength.textContent=Math.log2(parseInt(numQuadrants.value))
+        densityGray()
     }
+
+    function densityGray(){
+        fcgrForward.innerHTML=`<p style="color:black;font-size:medium;font-family:arial">Forward density of sequence length ${seq.length}
+                               with ${numQuadrants.value} quadrants &#8594; n-gram length ${parseInt(ngramLength.textContent*1000000)/1000000}
+                               </p>`
+        fcgrBackward.innerHTML=`<p style="color:black;font-size:medium;font-family:arial">Forward density of sequence length ${seq.length}
+                               with ${numQuadrants.value} quadrants &#8594; n-gram length ${parseInt(ngramLength.textContent*1000000)/1000000}
+                               </p>`
+        fcgrForward.appendChild(u2.plotCanvasGray(numQuadrants.value,'forward'))
+        fcgrBackward.appendChild(u2.plotCanvasGray(numQuadrants.value,'backward'))
+    }
+    
     
 })()
