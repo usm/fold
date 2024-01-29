@@ -3,8 +3,8 @@ console.log(`index.js loaded\n${Date()}`);
 (async function(){ // go async and anonymous 
     localForage = (await import('https://cdn.jsdelivr.net/npm/localforage@1.10.0/+esm')).default;
     // load USM v3 module
-    // Umod = (await import(`https://usm.github.io/3/usm.mjs`))
-    Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
+    Umod = (await import(`https://usm.github.io/3/usm.mjs`))
+    //Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
     
     function plotUSM(){
         taCGR.value=taCGR.value.toUpperCase().replace(/[^ACGT]/g,'')
@@ -81,6 +81,14 @@ console.log(`index.js loaded\n${Date()}`);
                                </p>`
         fcgrForward.appendChild(u2.plotCanvasGray(numQuadrants.value,'forward'))
         fcgrBackward.appendChild(u2.plotCanvasGray(numQuadrants.value,'backward'))
+        // download links
+        let downloadLinkForward = document.createElement('span')
+        downloadLinkForward.innerHTML='<br>[<a href="#">download map as png</a>]'
+        fcgrForward.appendChild(downloadLinkForward)
+        let downloadLinkBackward = document.createElement('span')
+        downloadLinkBackward.innerHTML='<br>[<a href="#">download map as png</a>]'
+        fcgrBackward.appendChild(downloadLinkBackward)
+        
     }
     
     
