@@ -3,15 +3,15 @@ console.log(`index.js loaded\n${Date()}`);
 (async function(){ // go async and anonymous 
     localForage = (await import('https://cdn.jsdelivr.net/npm/localforage@1.10.0/+esm')).default;
     // load USM v3 module
-    Umod = (await import(`https://usm.github.io/3/usm.mjs`))
-    //Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
+    //Umod = (await import(`https://usm.github.io/3/usm.mjs`))
+    Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
     
     function plotUSM(){
         taCGR.value=taCGR.value.toUpperCase().replace(/[^ACGT]/g,'')
         //let direction = [direction_forward,direction_backward].filter(ip=>ip.checked==true)[0].value
         let seed = [seed_middle,seed_circular,seed_bidirectional].filter(ip=>ip.checked==true)[0].value
         let size = parseInt(plotSize.value)+200
-        let u = new Umod.USM(taCGR.value,seed,['A','C','G','T'])
+        let u = new Umod.USM(taCGR.value,seed)
         //u.plotACGT(divPlotUSM,size,direction)
         //console.log(u)
         u.plotACGT(forwardACGT,size,'forward')
@@ -51,7 +51,7 @@ console.log(`index.js loaded\n${Date()}`);
     densityButton.onclick=function(){
         taDensitySequence.value=taDensitySequence.value.toLocaleUpperCase()
         seq = taDensitySequence.value // a new sequence may have been pasted in
-        u2 = new Umod.USM(seq,'bidirectional',['A','C','G','T'])
+        u2 = new Umod.USM(seq,'bidirectional',['A','G','C','T'])
         seqLength.textContent = u2.seq.length
         densityGray(u2)
         console.log(u2)
