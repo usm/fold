@@ -3,8 +3,8 @@ console.log(`index.js loaded\n${Date()}`);
 (async function(){ // go async and anonymous 
     localForage = (await import('https://cdn.jsdelivr.net/npm/localforage@1.10.0/+esm')).default;
     // load USM v3 module
-    //Umod = (await import(`https://usm.github.io/3/usm.mjs`))
-    Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
+    Umod = (await import(`https://usm.github.io/3/usm.mjs`))
+    //Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
     
     function plotUSM(){
         taCGR.value=taCGR.value.toUpperCase().replace(/[^ACGT]/g,'')
@@ -18,10 +18,6 @@ console.log(`index.js loaded\n${Date()}`);
         u.plotACGT(backwardACGT,size,'backward')
     }
 
-    function plotCanvas(){
-        
-    }
-    
     // coordinate plot
     plotUSM()
     taCGR.onkeyup=plotUSM;
@@ -72,6 +68,8 @@ console.log(`index.js loaded\n${Date()}`);
         densityGray()
     }
 
+    colorCheckbox.onchange=densityGray
+
     function densityGray(){
         fcgrForward.innerHTML=`<p style="color:black;font-size:small;font-family:arial">Forward density, bivariate seed, of sequence length ${seq.length}
                                with ${numQuadrants.value} quadrants &#8594; n-gram length ${parseInt(ngramLength.textContent*1000000)/1000000}
@@ -79,8 +77,10 @@ console.log(`index.js loaded\n${Date()}`);
         fcgrBackward.innerHTML=`<p style="color:black;font-size:small;font-family:arial;width:100%">Backward density, bivariate seed, of sequence length ${seq.length},
                                with ${numQuadrants.value} quadrants &#8594; n-gram length ${parseInt(ngramLength.textContent*1000000)/1000000}
                                </p>`
-        fcgrForward.appendChild(u2.plotCanvasGray(numQuadrants.value,'forward'))
-        fcgrBackward.appendChild(u2.plotCanvasGray(numQuadrants.value,'backward'))
+        let color = colorCheckbox.checked
+        //console.log('color:',colorCheckbox.checked,color)
+        fcgrForward.appendChild(u2.plotCanvasGray(numQuadrants.value,'forward',color))
+        fcgrBackward.appendChild(u2.plotCanvasGray(numQuadrants.value,'backward',color))
         // download links
         let downloadLinkForward = document.createElement('span')
         downloadLinkForward.innerHTML='<br>[<a href="#">download map as png</a>]'
