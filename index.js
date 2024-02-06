@@ -11,7 +11,7 @@ console.log(`index.js loaded\n${Date()}`);
         //let direction = [direction_forward,direction_backward].filter(ip=>ip.checked==true)[0].value
         let seed = [seed_middle,seed_circular,seed_bidirectional].filter(ip=>ip.checked==true)[0].value
         let size = parseInt(plotSize.value)+200
-        let u = new Umod.USM(taCGR.value,seed)
+        let u = new Umod.USM(taCGR.value,seed,['A','C','G','T'])
         //u.plotACGT(divPlotUSM,size,direction)
         //console.log(u)
         u.plotACGT(forwardACGT,size,'forward')
