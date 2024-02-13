@@ -3,8 +3,8 @@ console.log(`index.js loaded\n${Date()}`);
 (async function(){ // go async and anonymous 
     localForage = (await import('https://cdn.jsdelivr.net/npm/localforage@1.10.0/+esm')).default;
     // load USM v3 module
-    Umod = (await import(`https://usm.github.io/3/usm.mjs`))
-    //Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
+    //Umod = (await import(`https://usm.github.io/3/usm.mjs`))
+    Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
     
     function plotUSM(){
         taCGR.value=taCGR.value.toUpperCase().replace(/[^ACGT]/g,'')
