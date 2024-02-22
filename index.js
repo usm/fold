@@ -68,6 +68,8 @@ console.log(`index.js loaded\n${Date()}`);
         densityGray()
     }
 
+    resizeCheckbox.onchange=densityGray
+
     colorCheckbox.onchange=densityGray
 
     function densityGray(){
@@ -78,9 +80,10 @@ console.log(`index.js loaded\n${Date()}`);
                                with ${numQuadrants.value} quadrants &#8594; n-gram length ${parseInt(ngramLength.textContent*1000000)/1000000}
                                </p>`
         let color = colorCheckbox.checked
+        let resize = resizeCheckbox.checked
         //console.log('color:',colorCheckbox.checked,color)
-        fcgrForward.appendChild(u2.plotCanvasGray(numQuadrants.value,'forward',color))
-        fcgrBackward.appendChild(u2.plotCanvasGray(numQuadrants.value,'backward',color))
+        fcgrForward.appendChild(u2.plotCanvasGray(numQuadrants.value,'forward',color,resize))
+        fcgrBackward.appendChild(u2.plotCanvasGray(numQuadrants.value,'backward',color,resize))
         // download links
         let downloadLinkForward = document.createElement('span')
         downloadLinkForward.innerHTML='<br>[<a href="#">download map as png</a>]'
