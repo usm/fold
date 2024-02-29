@@ -4,7 +4,8 @@ console.log(`index.js loaded\n${Date()}`);
     localForage = (await import('https://cdn.jsdelivr.net/npm/localforage@1.10.0/+esm')).default;
     // load USM v3 module
     Umod = (await import(`https://usm.github.io/3/usm.mjs`))
-    //Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
+    // Umod = (await import(`http://localhost:8000/usm3/usm.mjs`))
+    // Umod = (await import(`http://localhost:8000/usmDev/usm.mjs`))
     
     function plotUSM(){
         taCGR.value=taCGR.value.toUpperCase().replace(/[^ACGT]/g,'')
@@ -81,6 +82,12 @@ console.log(`index.js loaded\n${Date()}`);
                                </p>`
         let color = colorCheckbox.checked
         let resize = resizeCheckbox.checked
+        if(resize){
+            let fixedSize = parseInt(document.querySelector('#plotSize').value)
+            let size = parseInt(document.querySelector('#numQuadrants').value)
+            resize = fixedSize/size
+            console.log('initial resize factor:',resize)
+        }
         //console.log('color:',colorCheckbox.checked,color)
         fcgrForward.appendChild(u2.plotCanvasGray(numQuadrants.value,'forward',color,resize))
         fcgrBackward.appendChild(u2.plotCanvasGray(numQuadrants.value,'backward',color,resize))
