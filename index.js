@@ -86,7 +86,7 @@ console.log(`index.js loaded\n${Date()}`);
             let fixedSize = parseInt(document.querySelector('#plotSize').value)
             let size = parseInt(document.querySelector('#numQuadrants').value)
             resize = fixedSize/size
-            console.log('initial resize factor:',resize)
+            // console.log('initial resize factor:',resize)
         }
         //console.log('color:',colorCheckbox.checked,color)
         fcgrForward.appendChild(u2.plotCanvasGray(numQuadrants.value,'forward',color,resize))
