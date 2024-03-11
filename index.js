@@ -69,8 +69,11 @@ console.log(`index.js loaded\n${Date()}`);
         densityGray()
     }
 
-    resizeCheckbox.onchange=densityGray
-
+    resizeCheckbox.onchange=densityGray   
+    taDensitySequence.onkeyup=function(){
+        taDensitySequence.value = taDensitySequence.value.toUpperCase()
+        densityButton.click()
+    }
     colorCheckbox.onchange=densityGray
 
     function densityGray(){

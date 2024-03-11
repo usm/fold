@@ -3,26 +3,55 @@
     <link href="fold.css" rel="stylesheet">
 </head>
 <body>
-    <h1>USM<sub style='font-size:large'>fold</sub> <sup style="font-size:large;font-weight:normal">[<a href="https://github.com/usm/fold" target="_blank">code</a>] [<a href="https://observablehq.com/@episphere/usm" target="_blank">notebook</a>] [<a href="https://github.com/usm/fold/issues" target="_blank">issues</a>]</sup></h1>
+    <h1>
+        USM<sub style='font-size:large'>fold</sub>
+        <sup style="font-size:large;font-weight:normal">
+            [<a href="https://github.com/usm/fold" target="_blank">code</a>
+            ] [<a href="https://observablehq.com/@episphere/usm" target="_blank">notebook</a>
+            ] [<a href="https://github.com/usm/fold/issues" target="_blank">issues</a>
+            ]
+        
+        
+        
+        </sup>
+    </h1>
     <p>USM-fold: Bidirectional Fractal Position Encoding of Biological Sequences.</p>
     <hr>
-    <h2>Universal Sequence Map (USM) generalization<br> of Chaos Game Representation (CGR)</h2>
-    <p>Let's start by loading the USM module, <code>Umod = (await import(`https://usm.github.io/3/usm.mjs`))</code>. Give it a try in the <a href="https://developer.chrome.com/docs/devtools/console" target="_blank">browser console</a>). Alternatively, <code>Umod</code>, can be engaged graphically to instantiate a small forward USM reproducing the original Chaos Game Representation procedure (CGR). Let's start with a short nucleotide sequence, say "GATTACA", and then add or remove nucleotides anyway you see fit.</p>
+    <h2>
+        Universal Sequence Map (USM) generalization<br>of Chaos Game Representation (CGR)
+    
+    
+    
+    </h2>
+    <p>
+        Let's start by loading the USM module, <code>Umod = (await import(`https://usm.github.io/3/usm.mjs`))</code>
+        . Give it a try in the <a href="https://developer.chrome.com/docs/devtools/console" target="_blank">browser console</a>
+        ). Alternatively, <code>Umod</code>
+        , can be engaged graphically to instantiate a small forward USM reproducing the original Chaos Game Representation procedure (CGR). Let's start with a short nucleotide sequence, say "GATTACA", and then add or remove nucleotides anyway you see fit.
+    
+    
+    
+    </p>
     <div id="divParms">
-            <!--<b> Direction:</b> <input type="radio" id="direction_forward" name="direction" value="forward" checked="true"> forward 
+        <!--<b> Direction:</b> <input type="radio" id="direction_forward" name="direction" value="forward" checked="true"> forward 
             <input type="radio" id="direction_backward" name="direction"value="backward"> backward;-->
         <b>Seed:</b>
-            <input type="radio" id="seed_middle" name="seed" value="middle" checked="true"> middle (CGR)
-            <input type="radio" id="seed_circular" name="seed" value="circular"> circular
-            <input type="radio" id="seed_bidirectional" name="seed" value="bidirectional"> bidirectional ;
-            <b>Size: </b><input id="plotSize" type="number" min=0 max=900 value=256>
-            <input type="range"  id="plotRange" min=0 max=900 value=256>
-            <textarea id="taCGR" style="width:100%;font-size:large">GATTACA</textarea>
+        <input type="radio" id="seed_middle" name="seed" value="middle" checked="true">
+        middle (CGR)
+            <input type="radio" id="seed_circular" name="seed" value="circular">
+        circular
+            <input type="radio" id="seed_bidirectional" name="seed" value="bidirectional">
+        bidirectional ;
+            <b>Size: </b>
+        <input id="plotSize" type="number" min=0 max=1024 value=256>
+        <input type="range" id="plotRange" min=0 max=1024 value=256>
+        <textarea id="taCGR" style="width:100%;font-size:large">GATTACA</textarea>
     </div>
     <!--<div id="divPlotUSM"></div>-->
     <table>
         <tr>
-            <td id="forwardACGT"></td><td id="backwardACGT"></td>
+            <td id="forwardACGT"></td>
+            <td id="backwardACGT"></td>
         </tr>
     </table>
     <!--
@@ -34,11 +63,30 @@
         <h2>Density distribution</h2>
         <p>
             Each iterated direction, forward and backward, populate a unit hypercube (a unit square in the case of DNA). For the specific case of CGR (forward USM with [1/2,1/2] seed) this is designated as a frequency CGR (FCGR). In the frequency mapping below the bidirectional seeding procedure is used. 
-            The default sequence is <a href="https://www.ncbi.nlm.nih.gov/sviewer/viewer.fcgi?id=399923581&db=nuccore&report=fasta&extrafeat=null&conwithfeat=on&hide-cdd=on&retmode=html&withmarkup=on&tool=portal&log$=seqview" target="_blank">NG_007726.3</a> for Homo sapiens epidermal growth factor receptor (EGFR), RefSeqGene (<a href="https://www.ncbi.nlm.nih.gov/nuccore/399923581" target="_blank">LRG_304</a>) on chromosome 7.
+            The default sequence is <a href="https://www.ncbi.nlm.nih.gov/sviewer/viewer.fcgi?id=399923581&db=nuccore&report=fasta&extrafeat=null&conwithfeat=on&hide-cdd=on&retmode=html&withmarkup=on&tool=portal&log$=seqview" target="_blank">NG_007726.3</a>
+            for Homo sapiens epidermal growth factor receptor (EGFR), RefSeqGene (<a href="https://www.ncbi.nlm.nih.gov/nuccore/399923581" target="_blank">LRG_304</a>
+            ) on chromosome 7.
             To try with your own sequences, paste them in the text area and click the button "Density".
+        
+        
+        
+        
         </p>
-        <button id="densityButton" disabled style="color:gray">Density</button> <b>Quadrants</b>: <input id="numQuadrants" type="number" value=256 style="color:blue;width:60" min=2 max=1024> <input id="rangeQuadrants" type="range" value=256 min=2 max=1024 style="width:200">, <b>Color</b>: <input id="colorCheckbox" type="checkbox" checked=true>; <b>resize</b>: <input id="resizeCheckbox" type="checkbox">
-        <br><b>Sequence length</b>: <span id="seqLength">...</span>, <b>Bins</b>: <span id="numBins">65536</span>, <b>n-gram length</b>: <span id="ngramLength">8</span>
+        <button id="densityButton" disabled style="color:gray">Density</button>
+        <b>Quadrants</b>
+        : <input id="numQuadrants" type="number" value=256 style="color:blue;width:60" min=2 max=1024>
+        <input id="rangeQuadrants" type="range" value=256 min=2 max=1024 style="width:200">
+        , <b>Color</b>
+        : <input id="colorCheckbox" type="checkbox" checked=true>
+        ; <b>resize</b>
+        : <input id="resizeCheckbox" type="checkbox">
+        <br>
+        <b>Sequence length</b>
+        : <span id="seqLength">...</span>
+        , <b>Bins</b>
+        : <span id="numBins">65536</span>
+        , <b>n-gram length</b>
+        : <span id="ngramLength">8</span>
         <textarea id="taDensitySequence" style="width:100%;font-size:small;height:100">...</textarea>
         <table id="fcgrTable">
             <tr>
@@ -46,9 +94,6 @@
                 <td id="fcgrBackward">USM backward density...</td>
             </tr>
         </table>
-            
-        </div>
     </div>
-    <script src="index.js"></script>
+</div><script src="index.js"></script>
 </body>
-
