@@ -18,10 +18,7 @@
     <p>USM-fold: Bidirectional Fractal Position Encoding of Biological Sequences.</p>
     <hr>
     <h2>
-        Universal Sequence Map (USM) generalization<br>of Chaos Game Representation (CGR)
-    
-    
-    
+        A. Universal Sequence Map (USM) generalization<br>of Chaos Game Representation (CGR)
     </h2>
     <p>
         Let's start by loading the USM module, <code>Umod = (await import(`https://usm.github.io/3/usm.mjs`))</code>
@@ -60,17 +57,13 @@
     -->
     <div id="divFold">
         <hr>
-        <h2>Density distribution</h2>
+        <h2>B. Density distribution</h2>
         <p>
             Each iterated direction, forward and backward, populate a unit hypercube (a unit square in the case of DNA). For the specific case of CGR (forward USM with [1/2,1/2] seed) this is designated as a frequency CGR (FCGR). In the frequency mapping below the bidirectional seeding procedure is used. 
             The default sequence is <a href="https://www.ncbi.nlm.nih.gov/sviewer/viewer.fcgi?id=399923581&db=nuccore&report=fasta&extrafeat=null&conwithfeat=on&hide-cdd=on&retmode=html&withmarkup=on&tool=portal&log$=seqview" target="_blank">NG_007726.3</a>
             for Homo sapiens epidermal growth factor receptor (EGFR), RefSeqGene (<a href="https://www.ncbi.nlm.nih.gov/nuccore/399923581" target="_blank">LRG_304</a>
             ) on chromosome 7.
             To try with your own sequences, paste them in the text area and click the button "Density".
-        
-        
-        
-        
         </p>
         <button id="densityButton" disabled style="color:gray">Density</button>
         <b>Quadrants</b>
@@ -94,6 +87,13 @@
                 <td id="fcgrBackward">USM backward density...</td>
             </tr>
         </table>
+    </div>
+    <div id="divFold">
+        <hr>
+        <h2>C. USM fold language model</h2>
+        <p>
+        The sequence data provided above (B. Density Distribution)
+        </p>
     </div>
 </div><script src="index.js"></script>
 </body>
