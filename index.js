@@ -101,6 +101,8 @@ console.log(`index.js loaded\n${Date()}`);
         let downloadLinkBackward = document.createElement('span')
         downloadLinkBackward.innerHTML='<br>[<a href="#">download map as png</a>]'
         fcgrBackward.appendChild(downloadLinkBackward)
+    }
+    function foldLanguage(){
         
     }
     
