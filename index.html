@@ -95,13 +95,31 @@
         The sequence data provided above (B. Density Distribution) was encoded by the USM iterated map procedure into forward and backward numeric coordinates coordinates. This embedded space defines a language model that can now be used to inspect the statistics of unit emission given a new sequence.
         To options are provided here, the new sequence can be provided directly as embedded coordinates, or an actual sequence can be used to produce those cordinates.
         </p>
-        <p><b>Probe model with sequence:</b>
-        <br><input id="probeSeq" size="100px">
-        </p>
         <p>
-            <b>Probe model with forward coordinates:</b>
-            <br><input id="fw1">
-            <br><input id="fw2">
+            <li><b>C1) (optional) pick a position from reference sequence </b><input type="number" id="picki" size="50px"><button id="pickn">pick</button></li>
+            <span id="pickedSeq" style="color:green">...</span>
+            
+            <li><b>C2) Embedding coordinates</b><br>(they can also be generated from the sequences below)</li>
+            Forward - 1 = ( <input id="fw1"> , <input id="fw2"> )
+            <br>Backward +1 = ( <input id="bk1"> , <input id="bk2"> )
+            <li><b>C3) Sequences</b></li>
+            <table>
+                <tr>
+                    <td>
+                        Forward: <input size="30%">
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>r1c1</td><td>r1c2</td><td>r1c3</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <input size="30%"> :Backward
+                    </td>
+                </tr>
+            </table>
         </p>
     </div>
 </div><script src="index.js"></script>
