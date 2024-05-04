@@ -55,22 +55,29 @@ console.log(`index.js loaded\n${Date()}`);
         
         // --- language model panel (C) ---//
         
-        picki.min=1
-        picki.max=u2.n-1
-        picki.value=Math.floor(u2.n/2)
-        picki.onchange=function(){
+        iRange.min=picki.min=0
+        iRange.max=picki.max=u2.n-1
+        iRange.value=picki.value=Math.floor(u2.n/2)
+        iRange.onchange=function(){
+            picki.value=iRange.value
+            pickn.click()
+        }
+        picki.onkeyup=picki.onchange=function(){
+            iRange.value=picki.value
             pickn.click()
         }
         pickn.onclick=function(){
             console.log(`picking from training sequence at position ${picki.value}`)
             let i = parseInt(picki.value)
-            fw1.value=u2.forward[0][i-1]
-            fw2.value=u2.forward[1][i-1]
-            bk1.value=u2.backward[0][i-1]
-            bk2.value=u2.backward[1][i-1]
-            pickedSeq.innerHTML=`...${u2.seq.slice(i-20,i).join().replace(/,/g,'')}<span style="color:red;background-color:yellow;font-size:x-large">${u2.seq[i]}</span>${u2.seq.slice(i+1,i+20).join().replace(/,/g,'')}...`
+            fw1.value=u2.forward[1][i-1]
+            fw2.value=u2.forward[0][i-1]
+            bk1.value=u2.backward[1][i+1]
+            bk2.value=u2.backward[0][i+1]
+            pickedSeq.innerHTML=`...${u2.seq.slice(i-31,i-1).join().replace(/,/g,'')}<span style="color:blue;font-size:large">[${u2.seq[i-1]}]&#8594;<span style="color:red;background-color:yellow;font-size:xx-large">${u2.seq[i]}</span>&#8592;[${u2.seq[i+1]}]</span>${u2.seq.slice(i+2,i+31).join().replace(/,/g,'')}...`
+            
             //debugger
         }
+        
         
         //debugger
     }
