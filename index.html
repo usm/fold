@@ -65,7 +65,7 @@
             ) on chromosome 7.
             To try with your own sequences, paste them in the text area and click the button "Density".
         </p>
-        <button id="densityButton" disabled style="color:gray">Density</button>
+        <button id="densityButton" style="color:gray">Density</button>
         <b>Quadrants</b>
         : <input id="numQuadrants" type="number" value=256 style="color:blue;width:60" min=2 max=1024>
         <input id="rangeQuadrants" type="range" value=256 min=2 max=1024 style="width:200">
@@ -96,12 +96,15 @@
         Two options are provided here, the new sequence can be provided directly as embedded coordinates, or an actual sequence can be used to produce those cordinates.
         </p>
         <p>
-            <li><b>C1) (optional) pick a position from the reference sequence </b><input type="number" id="picki" size="50px"><button id="pickn">pick</button><input id="iRange" type="range"></li>
+            <li><b>C1) Pick a position from the reference sequence </b><input type="number" id="picki" size="50px"><button id="pickn">pick from reference</button><input id="iRange" type="range"></li>
             <span id="pickedSeq" style="color:green">...</span>
             
             <li><b>C2) Embedding coordinates</b> (maybe start by picking from training data, above, and then try with your own sequences, below)</li>
-            Forward - 1 = ( <input id="fw1"> , <input id="fw2"> ): bin [<input size=6 id="binFw1" disabled=true>,<input size=6 id="binFw2" disabled=true>] = <span id="countFw"></span>
-            <br>Backward +1 = ( <input id="bk1"> , <input id="bk2"> ): bin [<input size=6 id="binBk1" disabled=true>,<input size=6 id="binBk2" disabled=true>] = <span id="countBk"></span>
+            Forward - 1 = ( <input id="fw1"> , <input id="fw2"> ): bin [<input style="width: 4em;" id="binFw1" type='number'>,<input style="width: 4em;" id="binFw2" type='number'>] = <span id="countFw"></span>
+            <br>Backward +1 = ( <input id="bk1"> , <input id="bk2"> ): bin [<input style="width: 4em;" id="binBk1" type='number'>,<input style="width: 4em;" id="binBk2" type='number'>] = <span id="countBk"></span>
+            <p><h3>Estimate emission probablity using the language model</h3>
+            The estimation is made by determining the 4 possible embeded positions (the four nucleotides) that could be taken by the sequence being analysed, and counting how many reference sequence embedded positions were found in the corresponding 4 bins.
+            </p>
             <li><b>C3) Using your own Sequence</b></li>
             <table>
                 <tr>

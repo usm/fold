@@ -82,22 +82,39 @@ console.log(`index.js loaded\n${Date()}`);
         }
 
         // rebin if values onchange
-        fw1.onkeyup=()=>{
-            binFw1.value=Math.floor(parseFloat(fw1.value)*parseFloat(numQuadrants.value))
-            countFw.textContent=Math.random()
-            //debugger
+        function rebin(){
+            fw1.onkeyup=()=>{
+                binFw1.value=Math.floor(parseFloat(fw1.value)*parseFloat(numQuadrants.value))
+                countFw.textContent=u2.lastFCGR.forward[binFw1.value][binFw2.value]
+            }
+            fw2.onkeyup=()=>{
+                binFw2.value=Math.floor(parseFloat(fw2.value)*parseFloat(numQuadrants.value))
+                countFw.textContent=u2.lastFCGR.forward[binFw1.value][binFw2.value]
+            }
+            bk1.onkeyup=()=>{
+                binBk1.value=Math.floor(parseFloat(bk1.value)*parseFloat(numQuadrants.value))
+                countBk.textContent=u2.lastFCGR.backward[binBk1.value][binBk2.value]
+            }
+            bk2.onkeyup=()=>{
+                binBk2.value=Math.floor(parseFloat(bk2.value)*parseFloat(numQuadrants.value))
+                countBk.textContent=u2.lastFCGR.backward[binBk1.value][binBk2.value]
+            }
+            //editing bis directly
+            binFw1.onkeyup=binFw1.onchange=binFw2.onkeyup=binFw2.onchange=binFw1.onkeyup=binBk1.onchange=binBk2.onkeyup=binBk2.onchange=()=>{
+                countFw.textContent=u2.lastFCGR.forward[binFw1.value][binFw2.value]
+                countBk.textContent=u2.lastFCGR.backward[binBk1.value][binBk2.value]
+            }
+            
+            /*
+            fw1.onkeyup()
+            fw2.onkeyup()
+            bk1.onkeyup()
+            bk2.onkeyup()
+            */
         }
-        fw2.onkeyup=()=>{
-            binFw2.value=Math.floor(parseFloat(fw2.value)*parseFloat(numQuadrants.value))
-        }
-        bk1.onkeyup=()=>{
-            binBk1.value=Math.floor(parseFloat(bk1.value)*parseFloat(numQuadrants.value))
-        }
-        bk2.onkeyup=()=>{
-            binBk2.value=Math.floor(parseFloat(bk2.value)*parseFloat(numQuadrants.value))
-        }
+        rebin()
         
-        debugger
+        //debugger
     }
     densityButton.click()
 
