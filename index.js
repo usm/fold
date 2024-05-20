@@ -74,12 +74,30 @@ console.log(`index.js loaded\n${Date()}`);
             bk1.value=u2.backward[1][i+1]
             bk2.value=u2.backward[0][i+1]
             pickedSeq.innerHTML=`...${u2.seq.slice(i-31,i-1).join().replace(/,/g,'')}<span style="color:blue;font-size:large">[${u2.seq[i-1]}]&#8594;<span style="color:red;background-color:yellow;font-size:xx-large">${u2.seq[i]}</span>&#8592;[${u2.seq[i+1]}]</span>${u2.seq.slice(i+2,i+31).join().replace(/,/g,'')}...`
-            
+            fw1.onkeyup()
+            fw2.onkeyup()
+            bk1.onkeyup()
+            bk2.onkeyup()
             //debugger
         }
+
+        // rebin if values onchange
+        fw1.onkeyup=()=>{
+            binFw1.value=Math.floor(parseFloat(fw1.value)*parseFloat(numQuadrants.value))
+            countFw.textContent=Math.random()
+            //debugger
+        }
+        fw2.onkeyup=()=>{
+            binFw2.value=Math.floor(parseFloat(fw2.value)*parseFloat(numQuadrants.value))
+        }
+        bk1.onkeyup=()=>{
+            binBk1.value=Math.floor(parseFloat(bk1.value)*parseFloat(numQuadrants.value))
+        }
+        bk2.onkeyup=()=>{
+            binBk2.value=Math.floor(parseFloat(bk2.value)*parseFloat(numQuadrants.value))
+        }
         
-        
-        //debugger
+        debugger
     }
     densityButton.click()
 
