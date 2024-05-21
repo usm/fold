@@ -100,9 +100,28 @@
             <span id="pickedSeq" style="color:green">...</span>
             
             <li><b>C2) Embedding coordinates</b> (maybe start by picking from training data, above, and then try with your own sequences, below)</li>
-            Forward - 1 = ( <input id="fw1"> , <input id="fw2"> ): bin [<input style="width: 4em;" id="binFw1" type='number'>,<input style="width: 4em;" id="binFw2" type='number'>] = <span id="countFw"></span>
-            <br>Backward +1 = ( <input id="bk1"> , <input id="bk2"> ): bin [<input style="width: 4em;" id="binBk1" type='number'>,<input style="width: 4em;" id="binBk2" type='number'>] = <span id="countBk"></span>
+            Forward - 1 = <span id="before" style="color:blue;"></span>( <input id="fw1"> , <input id="fw2"> ): bin [<input style="width: 4em;" id="binFw1" type='number'>,<input style="width: 4em;" id="binFw2" type='number'>] = <span id="countFw"></span>
+            <br>Backward +1 = <span id="after" style="color:blue;"></span>( <input id="bk1"> , <input id="bk2"> ): bin [<input style="width: 4em;" id="binBk1" type='number'>,<input style="width: 4em;" id="binBk2" type='number'>] = <span id="countBk"></span>
             <p><h3>Estimate emission probablity using the language model</h3>
+            <p>
+                <table>
+                    <tr>
+                        <th>Nucleotide</th><th>Forward embedding</th><th>Backward embedding</th><th>Compound</th>
+                    </tr>
+                    <tr>
+                        <th>A (0,0)</th><td><input id="fw1A" style="width:20em;"><br><input id="fw2A" style="width:20em;"><br>[<input style="width: 3em;" id="binAfw1" type='number'>,<input style="width: 3em;" id="binAfw2" type='number'>]</td><td><input id="bk1A" style="width:20em;"><br><input id="bk2A" style="width:20em;"><br>[<input style="width: 3em;" id="binAbk1" type='number'>,<input style="width: 3em;" id="binAbk2" type='number'>]</td><td>Compound</td>
+                    </tr>
+                    <tr>
+                        <th>C (0,1)</th><td><input id="fw1C"><br><input id="fw2C"></td><td><input id="bk1C"><br><input id="bk2C"></td><td>Compound</td>
+                    </tr>
+                    <tr>
+                        <th>G (1,0)</th><td><input id="fw1G"><br><input id="fw2G"></td><td><input id="bk1G"><br><input id="bk2G"></td><td>Compound</td>
+                    </tr>
+                    <tr>
+                        <th>T (1,1)</th><td><input id="fw1T"><br><input id="fw2T"></td><td><input id="bk1T"><br><input id="bk2T"></td><td>Compound</td>
+                    </tr>
+                </table>
+            </p>
             The estimation is made by determining the 4 possible embeded positions (the four nucleotides) that could be taken by the sequence being analysed, and counting how many reference sequence embedded positions were found in the corresponding 4 bins.
             </p>
             <li><b>C3) Using your own Sequence</b></li>
