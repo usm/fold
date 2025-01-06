@@ -24,10 +24,31 @@ function foldDegree(x,d){
     return y
 }
 
+
+function similarLength1D(a,b,n=0){ // distance between two numeric values (1D)
+    // the basic folding operation comparing two numbers, >=0 and <=1
+    let s = (Math.round(a)==Math.round(b))
+    if(s){
+        return similarLength1D(fold(a),fold(b),n+1)
+    } else {
+        return n
+    }
+}
+
+function similarLength(a,b,n=0){ // generic implementation of similar distance, vectorized
+    
+    let s = 4
+}
+
+
 export{
     fold,
     foldArray,
-    foldDegree
+    foldDegree,
+    similarLength1D,
+    fcgr,
+    uEGFR,
+    u
 }
 
 
@@ -38,3 +59,43 @@ import('./fold.mjs')
 
 
 */
+
+// experimental functions, developed first as snippets
+
+async function fcgr(L=2){
+    console.log('fcgr')
+    Umod = await (await import(`https://usm.github.io/3/usm.mjs`))
+    let seq = await localForage.getItem('LRG_304') // default LRG_304 EGFR sequence
+    if(!seq){
+        seq = (await Umod.getSeq()).seq
+        localForage.setItem('LRG_304',seq)
+    }
+    // u = new Umod.USM(seq,`bidirectional`,['A','C','G','T'])
+    let u = new Umod.USM(seq,`bidirectional`,['A','G','C','T'])
+    return u.fcgr(L)
+    // check edges:
+    //[C,T][55984,68461]
+    //[A,G][65905,54239]
+}
+
+async function uEGFR(seq){
+    Umod = await (await import(`https://usm.github.io/3/usm.mjs`))
+    seq = await localForage.getItem('LRG_304') // default LRG_304 EGFR sequence
+    if(!seq){
+        seq = (await Umod.getSeq()).seq
+        localForage.setItem('LRG_304',seq)
+    }
+    let u = new Umod.USM(seq,`bidirectional`,['A','G','C','T'])
+    return u
+}
+
+async function u(seq='GATTACA'){
+    const Umod = await (await import(`https://usm.github.io/3/usm.mjs`))
+    let u = new Umod.USM(seq,`circular`,['A','G','C','T'])
+    return u
+}
+
+async function foldPredict(pos,L){ // position and memory length
+    let u = await uEGFR()
+    debugger
+}
