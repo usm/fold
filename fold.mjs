@@ -35,6 +35,23 @@ function similarLength1D(a,b,n=0){ // distance between two numeric values (1D)
     }
 }
 
+function findMatchPositions(string, regex) {
+  const positions = [];
+  let match;
+
+  while ((match = regex.exec(string)) !== null) {
+    positions.push(match.index);
+  }
+
+  return positions;
+}
+
+// Example usage:
+// const string = "The quick brown fox jumps over the lazy dog.";
+// const regex = /the/gi; // Case-insensitive and global match
+// const positions = findMatchPositions(string, regex);
+// console.log(positions); // Output: [0, 31]
+
 function similarLength(a,b,n=0){ // generic implementation of similar distance, vectorized
     
     let s = 4
