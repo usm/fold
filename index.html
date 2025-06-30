@@ -99,12 +99,12 @@
             <li><b>C1) Pick a position from the reference sequence </b><input type="number" id="picki" size="50px"><button id="pickn">pick from reference</button><input id="iRange" type="range"></li>
             <span id="pickedSeq" style="color:green">...</span>
             
-            <li><b>C2) Embedding coordinates</b> (maybe start by picking from training data, above, and then try with your own sequences, below)</li>
+            <li><b>C2) Embedding coordinates</b> </li>
             Forward - 1 = <span id="before" style="color:blue;"></span>( <input id="fw1"> , <input id="fw2"> ): bin [<input style="width: 4em;" id="binFw1" type='number'>,<input style="width: 4em;" id="binFw2" type='number'>] = <span id="countFw"></span>
             <br>Backward +1 = <span id="after" style="color:blue;"></span>( <input id="bk1"> , <input id="bk2"> ): bin [<input style="width: 4em;" id="binBk1" type='number'>,<input style="width: 4em;" id="binBk2" type='number'>] = <span id="countBk"></span>
-            <p><h3>Estimate emission probablity using the language model</h3>
-            <p>
-                <table>
+            <p hidden=true><h3 hidden=true>Estimate emission probablity using the language model</h3>
+            <p hidden=true>
+                <table hidden=true>
                     <tr>
                         <th>Nucleotide</th><th>Forward embedding</th><th>Backward embedding</th><th>Compound</th>
                     </tr>
@@ -124,8 +124,8 @@
             </p>
             The estimation is made by determining the 4 possible embeded positions (the four nucleotides) that could be taken by the sequence being analysed, and counting how many reference sequence embedded positions were found in the corresponding 4 bins.
             </p>
-            <li><b>C3) Using your own Sequence</b></li>
-            <table>
+            <li hidden=true><b>C3) Using your own Sequence</b></li>
+            <table hidden=true>
                 <tr>
                     <td>
                         Forward: <input size="30%">
