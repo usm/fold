@@ -143,10 +143,10 @@ console.log(`index.js loaded\n${Date()}`);
 
     function densityGray(){
         fcgrForward.innerHTML=`<p style="color:black;font-size:small;font-family:arial">Forward density, bivariate seed, of sequence length ${seq.length}
-                               with ${numQuadrants.value} quadrants &#8594; n-gram length ${parseInt(ngramLength.textContent*1000000)/1000000}
+                               with ${numQuadrants.value} quadrants &#8594; k-mer length ${parseInt(ngramLength.textContent*1000000)/1000000}
                                </p>`
         fcgrBackward.innerHTML=`<p style="color:black;font-size:small;font-family:arial;width:100%">Backward density, bivariate seed, of sequence length ${seq.length},
-                               with ${numQuadrants.value} quadrants &#8594; n-gram length ${parseInt(ngramLength.textContent*1000000)/1000000}
+                               with ${numQuadrants.value} quadrants &#8594; k-mer length ${parseInt(ngramLength.textContent*1000000)/1000000}
                                </p>`
         let color = colorCheckbox.checked
         let resize = resizeCheckbox.checked
